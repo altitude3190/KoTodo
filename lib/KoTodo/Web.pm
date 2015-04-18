@@ -4,6 +4,15 @@ use strict;
 use warnings;
 use utf8;
 use Kossy;
+use DBI;
+
+use KoTodo::View::Task;
+sub _view {
+    my ($self, $view_name) = @_;
+    my $db_path = $self->root_dir . '/db/kotodo.db';
+    my $dbh = DBI->connect('dbi:SQLite:dbname=' . $db_path);
+    $self->{_view}->{$view_name} ||= eval "KoTodo::View::$view_name->new(" . '$dbh' . ")";
+}
 
 filter 'set_title' => sub {
     my $app = shift;
@@ -16,7 +25,8 @@ filter 'set_title' => sub {
 
 get '/' => [qw/set_title/] => sub {
     my ( $self, $c )  = @_;
-    $c->render('index.tx', { greeting => "Hello" });
+    my $tasks = $self->_view('Task')->show_tasks;
+    $c->render('index.tx', { greeting => "Hello", tasks => $tasks });
 };
 
 get '/json' => sub {
@@ -31,6 +41,7 @@ get '/json' => sub {
     ]);
     $c->render_json({ greeting => $result->valid->get('q') });
 };
+
 
 1;
 
