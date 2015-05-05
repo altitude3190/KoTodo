@@ -6,12 +6,13 @@ use utf8;
 use Kossy;
 use DBI;
 
-use KoTodo::View::Task;
-sub _view {
-    my ($self, $view_name) = @_;
+use KoTodo::Controller::Task;
+
+sub _controller {
+    my ($self, $controller_name) = @_;
     my $db_path = $self->root_dir . '/db/kotodo.db';
     my $dbh = DBI->connect('dbi:SQLite:dbname=' . $db_path);
-    $self->{_view}->{$view_name} ||= eval "KoTodo::View::$view_name->new(" . '$dbh' . ")";
+    $self->{_controller}->{$controller_name} ||= eval "KoTodo::Controller::$controller_name->new(" . '$dbh' . ")";
 }
 
 filter 'set_title' => sub {
@@ -25,7 +26,7 @@ filter 'set_title' => sub {
 
 get '/' => [qw/set_title/] => sub {
     my ( $self, $c )  = @_;
-    my $tasks = $self->_view('Task')->show_tasks;
+    my $tasks = $self->_controller('Task')->index;
     $c->render('index.tx', { greeting => "Hello", tasks => $tasks });
 };
 
