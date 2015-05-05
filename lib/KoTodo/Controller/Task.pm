@@ -25,10 +25,21 @@ sub index {
 
 sub create {
     my ($self, $params) = @_;
+    $self->_execute_model_method('create', $params);
+}
+
+sub delete {
+    my ($self, $id) = @_;
+    $self->_execute_model_method('delete', $id);
+}
+
+sub _execute_model_method {
+    my ($self, $method, $args) = @_;
+    # this method returns a success/error json response
     my $res;
     eval {
-        $self->{_model}->create($params);
-        $res = $self->_make_status_jsodn_res($STATUS_SUCCESS);
+        $self->{_model}->$method($args);
+        $res = $self->_make_status_json_res($STATUS_SUCCESS);
     };
     if ($@) {
         # TODO: $@ will be sent to log files

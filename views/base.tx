@@ -52,7 +52,7 @@
 <script type="text/javascript" src="<: $c.req.uri_for('/js/lib/collections/todos.js') :>"></script>
 <script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/container.js') :>"></script>
 <script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/header.js') :>"></script>
-<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-item-view.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-item.js') :>"></script>
 <script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-list.js') :>"></script>
 <script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-regist-form.js') :>"></script>
 

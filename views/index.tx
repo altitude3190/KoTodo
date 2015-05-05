@@ -36,7 +36,7 @@ This is made by Kossy which is a WAF written in Perl.</p>
       <p class="list-group-item-text">deadline: <%= deadline %></p>
     </div>
     <div class="col-sm-2 col-xs-4">
-      <button type="button" class="btn btn-default pull-right" aria-label="Left Align" style="margin-left:5px">
+      <button type="button" class="btn btn-default pull-right delete-todo-btn" aria-label="Left Align" style="margin-left:5px">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
       </button>
       <button type="button" class="btn btn-default pull-right" aria-label="Left Align">

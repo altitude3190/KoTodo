@@ -71,4 +71,14 @@ my $create = sub {
 
 post "/$API/todos/" => $create;
 
+# delete a todo
+my $delete = sub {
+    my ($self, $c) = @_;
+    my $id = $c->args->{id};
+    my $res = $self->_controller('Task')->delete($id);
+    $c->render_json($res);
+};
+
+router 'DELETE' => "/$API/todos/:id" => $delete;
+
 1;

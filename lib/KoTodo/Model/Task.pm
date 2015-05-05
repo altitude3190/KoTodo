@@ -26,6 +26,12 @@ sub create {
     $sth->execute($params->{task}, $params->{deadline}, $params->{created_at}, $params->{updated_at});
 }
 
+sub delete {
+    my ($self, $id) = @_;
+    my $sth = $self->{_dbh}->prepare("DELETE FROM tasks WHERE id = ?");
+    $sth->execute($id);
+}
+
 sub _make_object {
     my ($self, $sth) = @_;
     my @result_object = ();
