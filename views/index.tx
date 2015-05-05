@@ -1,6 +1,63 @@
 : cascade base
 : around content -> {
-<h1><: $greeting :> <: $c.stash.site_name :></h1>
-<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-: }
 
+<h1><: $greeting :> <: $c.stash.site_name :></h1>
+
+<p>KoTodo is a simple todo list application.<br>
+This is made by Kossy which is a WAF written in Perl.</p>
+
+<h2 class="page-header">Your Tasks</h2>
+
+<div id="header-container" style="margin-bottom:15px">
+  <!-- regist task button, searach bar etc. are set here -->
+</div>
+
+<div id="todo-list-container">
+  <!-- todos are set here -->
+</div>
+
+
+<!--
+  templates are as follows
+-->
+
+<script type="text/template" id="tmpl-header">
+  <a href="#new">
+    <button type="button" class="btn btn-default btn-primary" id="btn-new-todo">
+      <span class="glyphicon glyphicon-plus"></span> New Task
+    </button>
+  </a>
+</script>
+
+<script type="text/template" id="tmpl-todo-item">
+  <div class="row">
+    <div class="col-sm-10 col-xs-8">
+      <h4 class="list-group-item-heading"><%= task %></h4>
+      <p class="list-group-item-text">deadline: <%= deadline %></p>
+    </div>
+    <div class="col-sm-2 col-xs-4">
+      <button type="button" class="btn btn-default pull-right" aria-label="Left Align" style="margin-left:5px">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default pull-right" aria-label="Left Align">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl-todo-form">
+  <form id="todo-regist-form">
+    <div class="form-group">
+      <label for="task">New Task</label>
+      <input type="text" class="form-control" id="task-content" placeholder="task">
+    </div>
+    <div class="form-group">
+      <label for="Deadline">Deadline</label>
+      <input type="date" class="form-control" id="deadline" value="2015-01-01">
+    </div>
+    <button type="submit" class="btn btn-default" id="btn-regist-todo">Regist</button>
+  </form>
+</script>
+
+: }

@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-<title>KoTodo</title>
-<link rel="shortcut icon" href="<: $c.req.uri_for('/favicon.ico') :>" type="image/vnd.microsoft.icon" />
-<link rel="stylesheet" href="<: $c.req.uri_for('/css/bootstrap.min.css') :>">
-<style>
-body {
-  padding-top: 60px;
-}
-</style>
-<link rel="stylesheet" href="<: $c.req.uri_for('/css/bootstrap-responsive.min.css') :>">
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <title>KoTodo</title>
+  <link rel="shortcut icon" href="<: $c.req.uri_for('/favicon.ico') :>" type="image/vnd.microsoft.icon" />
+  <link rel="stylesheet" href="<: $c.req.uri_for('/vendor/bootstrap/css/bootstrap.min.css') :>">
 </head>
+
 <body>
 
-<div class="navbar navbar-fixed-top">
-<div class="navbar-inner">
-<div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</a>
-<a class="brand" href="<: $c.req.uri_for('/') :>">KoTodo</a>
-<div class="nav-collapse">
-<ul class="nav">
-<li class="active"><a href="<: $c.req.uri_for('/') :>">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div> <!--/.nav-collapse -->
-</div>
-</div>
-</div>
+<nav class="navbar navbar-default">
+  <div class="container container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">KoToDo</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">About<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container .container-fluid -->
+</nav>
 
 <div class="container">
 
 : block content -> { }
 
-</div> <!-- /container -->
+</div> <!-- /.container -->
 
-<script type="text/javascript" src="<: $c.req.uri_for('/js/jquery.min.js') :>"></script>
-<script type="text/javascript" src="<: $c.req.uri_for('/js/bootstrap.min.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/vendor/jquery/jquery.min.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/vendor/bootstrap/js/bootstrap.min.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/vendor/underscore/underscore-min.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/vendor/backbone/backbone.js') :>"></script>
+
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/app.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/routers/router.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/models/todo.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/collections/todos.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/container.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/header.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-item-view.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-list.js') :>"></script>
+<script type="text/javascript" src="<: $c.req.uri_for('/js/lib/views/todo-regist-form.js') :>"></script>
+
 </body>
+
 </html>
-
-
