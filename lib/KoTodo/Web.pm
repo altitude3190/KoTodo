@@ -44,5 +44,31 @@ get '/json' => sub {
 };
 
 
-1;
+#------------------------------
+# APIs are as follows
+#------------------------------
 
+my $API = 'api';
+
+# get a list of all todos
+my $index = sub {
+    my ($self, $c)  = @_;
+    my $todos = $self->_controller('Task')->index;
+    $c->render_json(+{todos => $todos});
+};
+
+get "/$API/todos/"     => $index;
+get "/$API/todos.json" => $index;
+
+# create a new todo
+my $create = sub {
+    my ($self, $c) = @_;
+    $c->env->{'kossy.request.parse_json_body'} = 1;
+    my $params = $c->req->body_parameters;
+    my $res = $self->_controller('Task')->create($params);
+    $c->render_json($res);
+};
+
+post "/$API/todos/" => $create;
+
+1;

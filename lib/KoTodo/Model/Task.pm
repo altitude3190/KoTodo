@@ -18,6 +18,14 @@ sub select_all {
     $self->_make_object($sth);
 }
 
+sub create {
+    my ($self, $params) = @_;
+    my $sth = $self->{_dbh}->prepare(
+        "INSERT INTO tasks (task, deadline, created_at, updated_at) VALUES (?, ?, ?, ?)"
+    );
+    $sth->execute($params->{task}, $params->{deadline}, $params->{created_at}, $params->{updated_at});
+}
+
 sub _make_object {
     my ($self, $sth) = @_;
     my @result_object = ();
