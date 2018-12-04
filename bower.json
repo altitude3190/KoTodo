@@ -1,0 +1,25 @@
+{
+  "name": "KoTodo",
+  "version": "0.0.1",
+  "homepage": "https://github.com/altitude3190/KoTodo",
+  "authors": [
+    "hodaka <altitude3190@gmail.com>"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "backbone": "~1.1.2"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "dist/js/bootstrap.min.js",
+      "css": "dist/css/bootstrap.min.css",
+      "fonts": "dist/fonts/*"
+    },
+    "jquery": {
+      "": "dist/jquery.min.*"
+    },
+    "underscore": {
+      "": "underscore-min.*"
+    }
+  }
+}
